@@ -1,0 +1,11 @@
+* Division study
+A conceptual division app for younger children to practice.
+It's a quick build that's optimised for mobile devices. It works as an app being added to a devices homescreen if needed.
+
+- Select the "Next!" to load another set to sight.
+
+Icon sourced from:
+https://www.flaticon.com/free-icon/division_753323
+
+
+https://division-study.netlify.app

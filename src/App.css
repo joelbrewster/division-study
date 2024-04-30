@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap");
+
+:root {
+  --white: #fefefe;
+  --black: #24292f;
+  --accent: #0000ff;
+  --accent-light: #ff0000;
+  --background: #101010;
+  --accent-neon: #3dcef2;
+  --accent-yellow: #fcf900;
+  --accent-green: #00f0bd;
+  --accent-pink: #fd2d9b;
+  --accent-purple: #2d203c;
+}
+
+#root {
+  padding-top: 0;
+  max-height: 100vh;
+}
+
+body {
+  font-family: monospace;
+  font-family: "DotGothic16", sans-serif;
+  margin: 0;
+}
+
+.App {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  perspective: 800px;
+  overflow: hidden;
+  background-image: linear-gradient(
+    to top,
+    #0f0209,
+    #23061d,
+    #330531,
+    #3e024b,
+    #41056a,
+    #520578,
+    #640385,
+    #770092,
+    #9b0089,
+    #b8007e,
+    #ce1173,
+    #e03168
+  );
+  animation: hue 30s infinite linear;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    /* Looks like it circles if -360 */
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+.content {
+  margin: auto;
+  padding: 0.25rem 2rem;
+}
+
+#question {
+  font-size: 10vh;
+  color: var(--accent-green);
+  padding: 0;
+  margin: 0;
+}
+
+.answer {
+  color: var(--accent-yellow);
+  border-bottom: 2px solid var(--accent-yellow);
+  font-size: 8vh;
+  opacity: 0;
+  margin: 4rem 0;
+}
+
+.new {
+  color: var(--accent-neon);
+  font-size: 2vh;
+  padding: 1rem 1.25rem;
+  border: calc(2vh - 10px) solid var(--accent-neon);
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  #question {
+    font-size: 10vw;
+  }
+
+  .answer {
+    font-size: 8vw;
+  }
+
+  .new {
+    font-size: 7vw;
+    border: calc(2vh - 15px) solid var(--accent-neon);
+  }
+}
+
+.fade .answer {
+  opacity: 1;
+  transition: 1s linear;
+}
+
+.fade {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
