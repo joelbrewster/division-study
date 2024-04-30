@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css"; // assuming you have an App.css file for css
 
 function App() {
-  const [numbers, setNumbers] = useState({
-    number1: Math.floor(Math.random() * 12),
-    number2: Math.floor(Math.random() * 12) + 1, // Ensure number2 is not 0
-  });
+  const [numbers, setNumbers] = useState(generateNumbers());
 
   const [fade, setFade] = useState(false);
 
@@ -15,16 +12,20 @@ function App() {
     return () => clearTimeout(timer);
   }, [numbers]);
 
-  function sumTing(a, b) {
-    // Perform division instead of multiplication
-    return Math.floor(a / b);
+  function generateNumbers() {
+    const number1 = Math.floor(Math.random() * 12) + 1; // Ensure number1 is not 0
+    let number2 = Math.floor(Math.random() * 12) + 1; // Ensure number2 is not 0
+
+    // Ensure number2 divides number1 evenly
+    while (number1 % number2 !== 0) {
+      number2 = Math.floor(Math.random() * 12) + 1;
+    }
+
+    return { number1, number2 };
   }
 
   function handleUpdate() {
-    setNumbers({
-      number1: Math.floor(Math.random() * 12),
-      number2: Math.floor(Math.random() * 12) + 1, // Ensure number2 is not 0
-    });
+    setNumbers(generateNumbers());
   }
 
   return (
@@ -38,7 +39,7 @@ function App() {
         </div>
         <div id="answer" className={`row ${fade ? "" : "fade"}`}>
           <h3 className="answer">
-            {sumTing(numbers.number1, numbers.number2)}
+            {numbers.number1 / numbers.number2}
           </h3>
         </div>
         <br />
