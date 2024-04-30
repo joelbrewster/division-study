@@ -13,13 +13,11 @@ function App() {
   }, [numbers]);
 
   function generateNumbers() {
-    const number1 = Math.floor(Math.random() * 12) + 1; // Ensure number1 is not 0
-    let number2 = Math.floor(Math.random() * 12) + 1; // Ensure number2 is not 0
-
-    // Ensure number2 divides number1 evenly
-    while (number1 % number2 !== 0) {
+    let number1, number2;
+    do {
+      number1 = Math.floor(Math.random() * 12) + 1;
       number2 = Math.floor(Math.random() * 12) + 1;
-    }
+    } while (number1 % number2 !== 0); // Ensure whole number division
 
     return { number1, number2 };
   }
